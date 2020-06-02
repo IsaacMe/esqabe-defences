@@ -2,6 +2,10 @@ const OPTIONS = {
     autoComplete: 0
 }
 
+const URLS = [
+    "https://www.google.com/complete/search?*"
+]
+
 
 function randInt(min, max) {
     return Math.floor(((window.crypto.getRandomValues(new Uint32Array(1))[0] / 0x100000000) * (max - min)) + min);
@@ -23,10 +27,23 @@ function addRandomPadding(e) {
 
     return { requestHeaders: e.requestHeaders };
 }
+
+function cancelIfNess(e) {
+    if (OPTIONS.autoComplete >= 3) {
+        return { cancel: true };
+    }
+}
   
+
+browser.webRequest.onBeforeRequest.addListener(
+    cancelIfNess,
+    {urls: URLS},
+    ["blocking"]
+);
+
 browser.webRequest.onBeforeSendHeaders.addListener(
     addRandomPadding,
-    {urls: ["https://www.google.com/complete/search?*"]},
+    {urls: URLS},
     ["blocking", "requestHeaders"]
 );
 
