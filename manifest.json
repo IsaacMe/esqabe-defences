@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    "name": "ESQABE Defences",
+    "description": "WebExtension defending against ESQABE defences",
+    "version": "0.0.1",
+    "icons": {
+      "64": "icons/icon.png"
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "esqabe-defences@isaacmeers.be"
+      }
+    },
+    "background": {
+        "scripts": ["autocomplete_padder.js"]
+    },
+    "options_ui": {
+        "page": "options/options.html",
+        "browser_style": true,
+        "chrome_style": true
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://*.google.com/*",
+          "*://*.google.be/*",
+          "*://*.google.nl/*"
+        ],
+        "js": [
+          "google_content_script.js"
+        ]
+      }
+    ],
+    "permissions": [
+      "activeTab",
+      "webRequest",
+      "webRequestBlocking",
+      "storage",
+      "<all_urls>"
+    ]
+  }
