@@ -6,6 +6,8 @@ const URLS = [
     "https://www.google.com/complete/search?*"
 ]
 
+let latest_received = 0;
+
 
 function randInt(min, max) {
     return Math.floor(((window.crypto.getRandomValues(new Uint32Array(1))[0] / 0x100000000) * (max - min)) + min);
@@ -20,17 +22,23 @@ function randString(l) {
 }
 
 function addRandomPadding(e) {
-    console.log(OPTIONS.autoComplete);
     if (OPTIONS.autoComplete >= 1) { 
-        e.requestHeaders.push({ name: 'X-Padding', value: randString(randInt(3, 50))})
+        e.requestHeaders.push({ name: 'X-Padding', value: randString(randInt(0, 40))})
     }
 
     return { requestHeaders: e.requestHeaders };
 }
 
-function cancelIfNess(e) {
+async function cancelIfNess(e) {
     if (OPTIONS.autoComplete >= 3) {
         return { cancel: true };
+    } else if (OPTIONS.autoComplete >= 2) {
+        const t = Date.now();
+        latest_received = t;
+        await new Promise(r => setTimeout(r, 500));
+        if (t < latest_received) {
+            return { cancel: true };
+        }
     }
 }
   
@@ -51,9 +59,13 @@ browser.webRequest.onBeforeSendHeaders.addListener(
 // "https://*/complete/search"
 
 browser.storage.sync.get('autoComplete').then((val) => {
-    OPTIONS.autoComplete = val.autoComplete;
+    if (val.autoComplete !== undefined) {
+        OPTIONS.autoComplete = val.autoComplete;
+    }
 });
 
 browser.storage.onChanged.addListener((changes, area) => {
-    OPTIONS.autoComplete = changes.autoComplete.newValue;
+    if (changes.autoComplete !== undefined) {
+        OPTIONS.autoComplete = changes.autoComplete.newValue;
+    }
 });

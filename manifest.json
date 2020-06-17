@@ -12,7 +12,11 @@
       }
     },
     "background": {
-        "scripts": ["autocomplete_padder.js"]
+        "scripts": ["autocomplete_padder.js", "information_background.js", "dummy_generator.js"]
+    },
+    "browser_action": {
+        "default_title": "ESQABE Defences",
+        "default_popup": "popup/popup.html"
     },
     "options_ui": {
         "page": "options/options.html",

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <header>
+        <h1>ESQABE</h1>
+        <button id="button-options"><span class="emoji">⚙️</span></button>
+    </header>
+    <main>
+        <div id="your" class="block">
+            <h2>Your last search query:</h2>
+            <p id="val-search" class="value"></p>
+            <div id="err-no-active-search" class="card error">
+                No active search detected
+            </div>
+        </div>
+        <div id="eavesdropper" class="block">
+            <h2>What does an eavesdropper see?</h2>
+            <div id="card-length" class="card">
+                The length of your search query: <span id="val-query-length" class="value"></span>
+            </div>
+            <div id="err-length-defence" class="card warning">
+                An eavesdropper cannot extract this query as the defence is turned on!
+            </div>
+            <div id="card-websites" class="card">
+                The results you opened:
+                <ul id="val-websites-list" class="value">
+                </ul>
+                <p class="explain"><span class="emoji">⚠️</span> = Website contains search query on frontpage!</p>
+                <p class="explain"><span class="emoji">🔒</span> = Website supports ESNI and could be hidden</p>
+            </div>
+            <div id="card-results" class="card">
+                The search query an eavesdropper would guess:
+                <ol id="val-results" class="value">
+                </ol>
+            </div>
+        </div>
+        <div class="block">
+            <div id="esni-checking" class="card">Unkown if domainnames are hidden, check in settings</div>
+            <div id="esni-enabled" class="card success">Websites that support ESNI are succesfully hidden!</div>
+            <div id="esni-disabled" class="card warning">Websites are visible for eavesdropper</div>
+        </div>
+    </main> 
+    <script src="popup.js"></script>
+</body>
+
+</html>

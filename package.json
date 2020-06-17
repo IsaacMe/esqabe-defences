@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/IsaacMe/esqabe-defences/issues"
   },
-  "homepage": "https://github.com/IsaacMe/esqabe-defences#readme"
+  "homepage": "https://github.com/IsaacMe/esqabe-defences#readme",
+  "dependencies": {}
 }

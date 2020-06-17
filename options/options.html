@@ -6,16 +6,28 @@
   </head>
 
 <body>
-  <form>
+  <form id="form-comp" class="browser-style">
       <label>Autocomplete hiding level</label>
-      <select id="autocomp">
+      <select class="browser-style" id="autocomp">
         <option value="0">0 - No countermeasure</option>
         <option value="1">1 - Only padding</option>
         <option value="2">2 - Delaying & padding</option>
         <option value="3">3 - Turn off autocomplete</option>
       </select>
-      <button type="submit">Save</button>
+      <button class="browser-style" type="submit">Save</button>
+
   </form>
+  <form id="form-dummy" class="browser-style">
+    <label>Introduce dummy traffic with Wikipedia</label>
+    <select class="browser-style" id="dummy">
+      <option value="0">0 - No dummy traffic</option>
+      <option value="1">1 - Dummy traffic when visiting Wikipedia</option>
+    </select>
+    <button class="browser-style" type="submit">Save</button>
+
+  </form>
+  <p><strong>Are my domainnames hidden?</strong> <span id="esni-enabled">Run test first!</span></p>
+  <button id="button-browser-cap" class="browser-style">Check if domainnames are hidden</button>
   <script src="options.js"></script>
 </body>
 
