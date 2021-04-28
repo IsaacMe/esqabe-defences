@@ -1,5 +1,5 @@
 # ESQABE Defences
-This repository contains the WebExtension which implements defences against [ESQABE](https://github.com/IsaacMe/ESQUABE) (Encrypted Search Query Analysis By Eavesdropping) and other Search Engine Autocomplete eavesdroppers.
+This repository contains the WebExtension which implements defences against [ESQABE](https://github.com/IsaacMe/ESQABE) (Encrypted Search Query Analysis By Eavesdropping) and other Search Engine Autocomplete eavesdroppers.
 
 Find out more in our paper published at IFIP SEC 2021. (DOI will be added once available)
 
